@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Valentín 💖</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffe6f2;
+            background-image: url('https://www.transparenttextures.com/patterns/hearts.png');
+        }
+        .container {
+            margin-top: 100px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            display: inline-block;
+        }
+        h1 {
+            color: #ff4081;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .yes {
+            background-color: #ff4081;
+            color: white;
+        }
+        .no {
+            background-color: #ccc;
+            color: black;
+            position: absolute;
+        }
+        #warning {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #ff4081;
+            display: none;
+        }
+        #signature {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            font-size: 16px;
+            color: #ff4081;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>¿Querés ser mi San Valentín amor? 🥺</h1>
+        <div class="buttons">
+            <button class="yes" onclick="showMessage()">Sí</button>
+            <button class="no" onmouseover="moveButton()" id="noButton">No</button>
+        </div>
+        <p id="message" style="display: none; font-size: 20px; color: #ff4081; margin-top: 20px;">
+            Te amooooo Lunaaaa 😍<br>
+            Sos perfecta, hermosa 💖<br>
+            Cuando te vea te como todaaaa 😘🔥<br>
+            Sos el amor de mi vida 💕<br>
+            Ya no puedo esperar para verte y tener ese cuerpo de colorada hermosa al lado mío 😍<br>
+            Te extraño amor. 🥺
+        </p>
+        <p id="warning">Amor, ¿qué intentas? 😜</p>
+        <p id="signature">ATTE: tizi 😊</p>
+    </div>
+    <script>
+        let warningMessages = ["Amor, ¿qué intentas? 😜", "Amor, ¿qué intentas? 😜", "No se puede 🤭", "Jijijij 😁", "No se puede 🤭", "Jijijij 😁", "No se puede 🤭", "Jijijij 😁"];
+        let warningIndex = 0;
+
+        function showMessage() {
+            document.getElementById("message").style.display = "block";
+            document.getElementById("noButton").style.display = "none";
+        }
+
+        function moveButton() {
+            let btn = document.querySelector(".no");
+            let x = Math.random() * (window.innerWidth - btn.clientWidth);
+            let y = Math.random() * (window.innerHeight - btn.clientHeight);
+            btn.style.left = `${x}px`;
+            btn.style.top = `${y}px`;
+            
+            let warning = document.getElementById("warning");
+            warning.textContent = warningMessages[warningIndex];
+            warning.style.display = "block";
+            
+            warningIndex = (warningIndex + 1) % warningMessages.length;
+            
+            setTimeout(() => {
+                warning.style.display = "none";
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
